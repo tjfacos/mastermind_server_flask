@@ -1,6 +1,6 @@
 import pymongo
 
-CLIENT_URI = open("client_url.txt").read()
+CLIENT_URI = "mongodb+srv://tjfacos:bAUnBEnJYevwyJqsVZgGb6muqb4qeD3KwSaTLnKevVSq8LrBkTyzkiWEHNicy98ax5ihJPWYeF2GSk3A5Jg5KaqypLhXg7J85dqY@mastermind.aghfrv1.mongodb.net/?retryWrites=true&w=majority"
 
 client = pymongo.MongoClient(CLIENT_URI)
 db = client["mastermindDB"]

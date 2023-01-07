@@ -4,6 +4,8 @@ import os
 CLIENT_URI = os.environ["MONGO_URI"]
 # print(CLIENT_URI)
 
+#Update
+
 client = pymongo.MongoClient(CLIENT_URI)
 db = client["mastermindDB"]
 users_collection = db["users"]

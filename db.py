@@ -1,5 +1,4 @@
 import pymongo
-import set_up_env
 import os
 
 CLIENT_URI = os.environ["MONGO_URI"]

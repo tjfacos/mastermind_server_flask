@@ -2,7 +2,7 @@ import pymongo
 import os
 
 CLIENT_URI = os.environ["MONGO_URI"]
-print(CLIENT_URI)
+# print(CLIENT_URI)
 
 client = pymongo.MongoClient(CLIENT_URI)
 db = client["mastermindDB"]
@@ -84,12 +84,16 @@ def getUserStats(username, password): #Return username, average score, and perso
 
 
 def getLeaderboard(): #Return usernames and score for top 5 scores in collection
-    user_data = games_collection.find().sort("score")
+    user_data = db.games.find(sort = [("score", -1)])
     user_array = []
     for x in user_data:
         user_array.append(x)
+    print(len(user_array))
     leaderboard = []
+    
     for i in range(5):
+        print(i)
+        print(i == len(user_array))
         if i == len(user_array):
             break
         
@@ -98,7 +102,7 @@ def getLeaderboard(): #Return usernames and score for top 5 scores in collection
             "score": user_array[i]["score"]
         })
         
-        return leaderboard
+    return leaderboard
 
 
 if __name__ == "__main__":

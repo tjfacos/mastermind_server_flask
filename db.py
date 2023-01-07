@@ -1,6 +1,9 @@
 import pymongo
+import set_up_env
+import os
 
-CLIENT_URI = "mongodb+srv://tjfacos:bAUnBEnJYevwyJqsVZgGb6muqb4qeD3KwSaTLnKevVSq8LrBkTyzkiWEHNicy98ax5ihJPWYeF2GSk3A5Jg5KaqypLhXg7J85dqY@mastermind.aghfrv1.mongodb.net/?retryWrites=true&w=majority"
+CLIENT_URI = os.environ["MONGO_URI"]
+print(CLIENT_URI)
 
 client = pymongo.MongoClient(CLIENT_URI)
 db = client["mastermindDB"]

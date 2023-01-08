@@ -28,7 +28,7 @@ def userhandler(name, password):
         return "Error: method not available"
 
 @app.route('/change_password/<name>/<current>/<new>', methods = ['GET']) 
-def changePassword(name, current, new):
+def changeUserPassword(name, current, new):
     if verifyUser(name, current):
         changePassword(name, current, new)
         return "200"
@@ -51,9 +51,10 @@ def leaderboard():
 
     return jsonify(board_dict)
 
-@app.route('/score/<name>/<password>/<score>', methods = ["GET"])
-def postScore(name, password, score):
+@app.route('/score/<name>/<password>/<score>', methods = ["POST"])
+def postUserScore(name, password, score):
     if verifyUser(name, password):
+        print("verified")
         postScore(name, password, int(score))
         return "200"
 

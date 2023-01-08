@@ -1,9 +1,9 @@
 import pymongo
 import os
 
-CLIENT_URI = os.environ["MONGO_URI"]
+# CLIENT_URI = os.environ["MONGO_URI"]
 
-#Update
+from set_up_local import CLIENT_URI
 
 client = pymongo.MongoClient(CLIENT_URI)
 db = client["mastermindDB"]
@@ -54,11 +54,10 @@ def changePassword(username, old_password, new_password):
             return "Error: Invalid User"
 
 def postScore(username, password, score):
-    if verifyUser(username, password):
-        games_collection.insert_one({
-            "user": username,
-            "score": score
-        })
+    games_collection.insert_one({
+        "user": username,
+        "score": score
+    })
 
 def getUserStats(username, password): #Return username, average score, and personal best
     if verifyUser(username, password):
@@ -113,4 +112,6 @@ def getLeaderboard(): #Return usernames and score for top 5 scores in collection
 
 
 if __name__ == "__main__":
-    pass   
+    postScore("thomas",
+    "264a441634556b66e64b60496fc16d6ba223eadc5d3d581e7271933f9e41135e2c9deb9a7b9c778b2b2578ef899e9bd077130972feefe04e9e6bf669be29de50",
+    1)

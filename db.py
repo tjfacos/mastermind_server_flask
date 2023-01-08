@@ -2,7 +2,6 @@ import pymongo
 import os
 
 CLIENT_URI = os.environ["MONGO_URI"]
-# print(CLIENT_URI)
 
 #Update
 
@@ -67,6 +66,9 @@ def getUserStats(username, password): #Return username, average score, and perso
             "user": username
         })
         
+        for x in user_data:
+            print(x)
+
         average = 0
         personal_best = 0
         num_entries = 0
@@ -77,7 +79,10 @@ def getUserStats(username, password): #Return username, average score, and perso
                 personal_best = score
 
             average += score
-        
+
+        if num_entries == 0:
+            return (0,0)
+
         average = round(average / num_entries)
 
         return average, personal_best
@@ -108,5 +113,4 @@ def getLeaderboard(): #Return usernames and score for top 5 scores in collection
 
 
 if __name__ == "__main__":
-       
-    print(getLeaderboard())
+    pass   

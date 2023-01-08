@@ -65,13 +65,13 @@ def getUserStats(username, password): #Return username, average score, and perso
             "user": username
         })
         
-        for x in user_data:
-            print(x)
-
+        
         average = 0
         personal_best = 0
         num_entries = 0
+        
         for entry in user_data:
+            print(entry)
             num_entries += 1
             score = entry["score"]
             if score > personal_best:
@@ -79,9 +79,7 @@ def getUserStats(username, password): #Return username, average score, and perso
 
             average += score
 
-        if num_entries == 0:
-            return (0,0)
-
+        
         average = round(average / num_entries)
 
         return average, personal_best
@@ -94,7 +92,7 @@ def getLeaderboard(): #Return usernames and score for top 5 scores in collection
     user_array = []
     for x in user_data:
         user_array.append(x)
-    print(len(user_array))
+    # print(len(user_array))
     leaderboard = []
     
     for i in range(5):
